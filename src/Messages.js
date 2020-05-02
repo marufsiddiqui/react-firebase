@@ -6,4 +6,4 @@ export const Messages = () => {
       <div className="EndOfMessages">That's every message!</div>
     </div>
   );
-}
+};

@@ -6,4 +6,4 @@ export const ChanelInputBox = () => {
       <input className="ChatInput" placeholder="Message #general" />
     </form>
   );
-}
+};

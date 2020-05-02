@@ -5,8 +5,7 @@ export const Members = () => {
     <div className="Members">
       <div>
         <div className="Member">
-          <div className="MemberStatus online"></div>
-          J Walker
+          <div className="MemberStatus online"></div>J Walker
         </div>
         <div className="Member">
           <div className="MemberStatus offline"></div>
@@ -15,4 +14,4 @@ export const Members = () => {
       </div>
     </div>
   );
-}
+};

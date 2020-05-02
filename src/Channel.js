@@ -15,4 +15,4 @@ export const Channel = () => {
       <Members />
     </div>
   );
-}
+};
