@@ -4,7 +4,7 @@ import { db } from './firebase';
 export const ChanelInputBox = () => {
   return (
     <form
-      onSubmit={(event) => {
+      onSubmit={event => {
         event.preventDefault();
         const value = event.target.elements[0].value;
         db.collection('channels').doc('general').collection('messages').add({

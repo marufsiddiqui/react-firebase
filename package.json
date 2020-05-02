@@ -21,8 +21,8 @@
     "deploy": "firebase deploy",
     "deploy-hosting": "firebase deploy --only hosting",
     "eject": "react-scripts eject",
-    "start": "BROWSER=none react-scripts start",
-    "test": "react-scripts test"
+    "prettier": "prettier --write src/**.js",
+    "start": "BROWSER=none react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,19 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { db } from './firebase';
+import React from 'react';
+import { useCollection } from './useCollection';
 
 export const Nav = () => {
-  const [channels, setChannels] = useState([]);
-
-  useEffect(() => {
-    return db.collection('channels').onSnapshot((snapshot) => {
-      setChannels(
-        snapshot.docs.map((d) => ({
-          ...d.data(),
-          id: d.id,
-        }))
-      );
-    });
-  }, []);
+  const channels = useCollection('channels');
 
   return (
     <div className="Nav">
@@ -31,7 +20,7 @@ export const Nav = () => {
         </div>
       </div>
       <nav className="ChannelNav">
-        {channels.map((channel) => (
+        {channels.map(channel => (
           <a href={`/channel/${channel.id}`} key={channel.id}>
             # {channel.id}
           </a>
