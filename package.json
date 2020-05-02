@@ -21,7 +21,7 @@
     "deploy": "firebase deploy",
     "deploy-hosting": "firebase deploy --only hosting",
     "eject": "react-scripts eject",
-    "start": "react-scripts start",
+    "start": "BROWSER=none react-scripts start",
     "test": "react-scripts test"
   },
   "eslintConfig": {
