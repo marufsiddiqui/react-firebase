@@ -7,14 +7,14 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
+    return firebase.auth().onAuthStateChanged(user => {
       if (user) {
         setUser(user);
       } else {
         setUser(null);
       }
     });
-  });
+  }, []);
 
   const handleSignIn = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
