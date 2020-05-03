@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCollection } from './useCollection';
+import { firebase } from './firebase';
 
 export const Nav = ({ user }) => {
   const channels = useCollection('channels');
@@ -11,7 +12,14 @@ export const Nav = ({ user }) => {
         <div>
           <div>{user.displayName}</div>
           <div>
-            <button className="text-button">log out</button>
+            <button
+              className="text-button"
+              onClick={() => {
+                firebase.auth().signOut();
+              }}
+            >
+              log out
+            </button>
           </div>
         </div>
       </div>
