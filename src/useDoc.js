@@ -5,12 +5,20 @@ export const useDoc = path => {
   const [doc, setDoc] = useState(null);
 
   useEffect(() => {
-    return db.doc(path).onSnapshot(doc => {
-      setDoc({
-        ...doc.data(),
-        id: doc.id,
+    let stillMounted = true;
+    db.doc(path)
+      .get()
+      .then(doc => {
+        if (stillMounted) {
+          setDoc({
+            ...doc.data(),
+            id: doc.id,
+          });
+        }
       });
-    });
+    return () => {
+      stillMounted = false;
+    };
   }, [path]);
 
   return doc;
