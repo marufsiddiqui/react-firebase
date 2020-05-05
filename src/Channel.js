@@ -1,16 +1,16 @@
 import React from 'react';
 import { ChannelInfo } from './ChannelInfo';
 import { Messages } from './Messages';
-import { ChanelInputBox } from './ChatInputBox';
+import { ChatInputBox } from './ChatInputBox';
 import { Members } from './Members';
 
-export const Channel = ({ user }) => {
+export const Channel = ({ user, channelId }) => {
   return (
     <div className="Channel">
       <div className="ChannelMain">
         <ChannelInfo />
-        <Messages />
-        <ChanelInputBox user={user} />
+        <Messages channelId={channelId} />
+        <ChatInputBox user={user} channelId={channelId} />
       </div>
       <Members />
     </div>
