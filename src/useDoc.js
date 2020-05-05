@@ -11,7 +11,7 @@ export const useDoc = path => {
         id: doc.id,
       });
     });
-  });
+  }, [path]);
 
   return doc;
 };
