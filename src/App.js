@@ -10,7 +10,7 @@ function App() {
   return user ? (
     <div className="App">
       <Nav user={user} />
-      <Channel />
+      <Channel user={user} />
     </div>
   ) : (
     <Login />
