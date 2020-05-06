@@ -10,7 +10,9 @@ export const FirstMessageFromUser = ({ message, showDay }) => {
       {showDay && (
         <div className="Day">
           <div className="DayLine" />
-          <div className="DayText">12/04/2020</div>
+          <div className="DayText">
+            {new Date(message.createdAt.seconds * 1000).toLocaleDateString()}
+          </div>
           <div className="DayLine" />
         </div>
       )}

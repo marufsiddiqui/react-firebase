@@ -1,4 +1,5 @@
 import React from 'react';
+import isSameDay from 'date-fns/isSameDay';
 import { useCollection } from './useCollection';
 import { FirstMessageFromUser } from './FirstMessageFromUser';
 
@@ -11,7 +12,7 @@ export const Messages = ({ channelId }) => {
       {messages.map((message, index) => {
         const previous = messages[index - 1];
         const showAvatar = shouldShowAvatar(previous, message);
-        const showDay = false;
+        const showDay = shouldShowDay(previous, message);
         return showAvatar ? (
           <FirstMessageFromUser
             key={message.id}
@@ -29,6 +30,21 @@ export const Messages = ({ channelId }) => {
     </div>
   );
 };
+
+function shouldShowDay(previous, message) {
+  const isFirst = !previous;
+
+  if (isFirst) {
+    return true;
+  }
+
+  const isNewDay = !isSameDay(
+    previous.createdAt * 1000,
+    message.createdAt * 1000
+  );
+
+  return isNewDay;
+}
 
 const shouldShowAvatar = (previous, message) => {
   const isFirst = !previous;
