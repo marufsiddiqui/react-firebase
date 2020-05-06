@@ -1,13 +1,15 @@
 import React from 'react';
+import { useDoc } from './useDoc';
 
-export const ChannelInfo = () => {
+export const ChannelInfo = ({ channelId }) => {
+  const channel = useDoc(`channels/${channelId}`);
   return (
     <div className="ChannelInfo">
       <div className="Topic">
         Topic:{' '}
-        <input className="TopicInput" placeholder="Talk about work stuff." />
+        <input className="TopicInput" defaultValue={channel && channel.topic} />
       </div>
-      <div className="ChannelName">#general</div>
+      <div className="ChannelName">#{channelId}</div>
     </div>
   );
 };

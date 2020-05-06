@@ -1,9 +1,9 @@
-import { useDoc } from './useDoc';
+import { useDocWithCache } from './useDocWithCache';
 import React from 'react';
 import formatDate from 'date-fns/format';
 
 export const FirstMessageFromUser = ({ message, showDay }) => {
-  const author = useDoc(message.user.path);
+  const author = useDocWithCache(message.user.path);
 
   return (
     <div>
