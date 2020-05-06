@@ -10,7 +10,7 @@ export const Messages = ({ channelId }) => {
       <div className="EndOfMessages">That's every message!</div>
       {messages.map((message, index) => {
         const previous = messages[index - 1];
-        const showAvatar = !previous || message.user.id !== previous.user.id;
+        const showAvatar = shouldShowAvatar(previous, message);
         const showDay = false;
         return showAvatar ? (
           <FirstMessageFromUser
@@ -28,4 +28,23 @@ export const Messages = ({ channelId }) => {
       })}
     </div>
   );
+};
+
+const shouldShowAvatar = (previous, message) => {
+  const isFirst = !previous;
+
+  if (isFirst) {
+    return true;
+  }
+
+  const differentUser = message.user.id !== previous.user.id;
+
+  if (differentUser) {
+    return true;
+  }
+
+  const hasBeenAWhile =
+    message.createdAt.seconds - previous.createdAt.seconds > 60 * 3;
+
+  return hasBeenAWhile;
 };
