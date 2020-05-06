@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import isSameDay from 'date-fns/isSameDay';
 import { useCollection } from './useCollection';
 import { FirstMessageFromUser } from './FirstMessageFromUser';
 
+const useChatScrollManager = ref => {
+  useEffect(() => {
+    const node = ref.current;
+    node.scrollTop = node.scrollHeight;
+  });
+};
+
 export const Messages = ({ channelId }) => {
   const messages = useCollection(`channels/${channelId}/messages`, 'createdAt');
 
+  const scrollerRef = useRef();
+
+  useChatScrollManager(scrollerRef);
+
   return (
-    <div className="Messages">
+    <div className="Messages" ref={scrollerRef}>
       <div className="EndOfMessages">That's every message!</div>
       {messages.map((message, index) => {
         const previous = messages[index - 1];
